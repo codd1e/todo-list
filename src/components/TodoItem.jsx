@@ -1,15 +1,21 @@
 import React from 'react';
 import Check from "./UI/check/Check";
+import Button from "./UI/button/Button";
 
-const TodoItem = ({item, change}) => {
+const TodoItem = ({item, change, remove}) => {
 
     return (
-        <button className="item" onClick={() => change(item.id)}>
-            <Check isComplited={item.isCompleted}/>
-            <span className={item.isCompleted === true ? 'completed' : 'default'}>
+        <div className='item'>
+            <button className="item__title" onClick={() => change(item.id)}>
+                <div style={{display: 'flex'}}>
+                    <Check isComplited={item.isCompleted}/>
+                    <span className={item.isCompleted === true ? 'completed' : 'default'}>
                 {item.title}
             </span>
-        </button>
+                </div>
+            </button>
+            <Button onClick={() => remove(item)}>Удалить</Button>
+        </div>
     );
 };
 

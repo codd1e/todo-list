@@ -14,6 +14,11 @@ function App() {
         setCount(prev => prev + 1)
     }
 
+    const removeItem = (item) => {
+        setItems(items.filter(p => p.id !== item.id))
+        setCount(prev => prev - 1)
+    }
+
     const changeTodo = (id) => {
         const copy = [...items];
         const currentItem = copy.find(item => item.id === id);
@@ -31,7 +36,7 @@ function App() {
             <div style={{textAlign: 'center', margin: '5px 0'}}>
                 Total todo: {count}
             </div>
-            {isTodo && <TodoList items={items} change={changeTodo} />}
+            {isTodo && <TodoList items={items} change={changeTodo} remove={removeItem}/>}
         </div>
     );
 }
